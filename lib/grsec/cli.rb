@@ -4,6 +4,8 @@ require "thor"
 require "thor/actions"
 require "runcom"
 
+$thor_runner = false # rubocop:disable Style/GlobalVars
+
 module Grsec
   # The Command Line Interface (CLI) for the gem.
   class CLI < Thor

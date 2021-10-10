@@ -6,6 +6,6 @@ module Grsec
     NAME = "grsec"
     LABEL = "Grsec"
     VERSION = "0.1.0"
-    VERSION_LABEL = "#{LABEL} #{VERSION}"
+    VERSION_LABEL = "#{LABEL} #{VERSION}".freeze
   end
 end
