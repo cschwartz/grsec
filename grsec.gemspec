@@ -13,10 +13,10 @@ Gem::Specification.new do |spec|
   spec.license = "MIT"
 
   spec.metadata = {
-    "bug_tracker_uri" => "https://github.com//grsec/issues",
-    "changelog_uri" => "https://github.com//grsec/blob/master/CHANGES.md",
-    "documentation_uri" => "https://github.com//grsec",
-    "source_code_uri" => "https://github.com//grsec"
+    "bug_tracker_uri" => "https://github.com/cschwartz/grsec/issues",
+    "changelog_uri" => "https://github.com/cschwartz/grsec/blob/master/CHANGES.md",
+    "documentation_uri" => "https://github.com/cschwartz/grsec",
+    "source_code_uri" => "https://github.com/cschwartz/grsec"
   }
 
   spec.signing_key = Gem.default_key_path
