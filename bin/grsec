@@ -1,0 +1,9 @@
+#! /usr/bin/env ruby
+# frozen_string_literal: true
+
+require "grsec"
+require "grsec/cli"
+require "grsec/identity"
+
+Process.setproctitle Grsec::Identity::VERSION_LABEL
+Grsec::CLI.start
