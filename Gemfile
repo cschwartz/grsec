@@ -16,10 +16,8 @@ group :code_quality do
 end
 
 group :development do
-  gem "debase"
   gem "gemsmith", "~> 15.5"
   gem "rake", "~> 13.0"
-  gem "ruby-debug-ide"
 end
 
 group :test do
@@ -30,4 +28,9 @@ end
 group :tools do
   gem "pry", "~> 0.13"
   gem "pry-byebug", "~> 3.9"
+end
+
+group :development, :test do
+  gem "debase"
+  gem "ruby-debug-ide"
 end
