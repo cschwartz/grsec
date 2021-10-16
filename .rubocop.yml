@@ -6,3 +6,7 @@ inherit_from:
 
 Lint/Void:
   CheckForMethodsWithNoSideEffects: false
+
+AllCops:
+  Exclude:
+    - 'bin/{rspec}'
