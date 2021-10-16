@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceRoot}/bin/grsec",
             "useBundler": true,
-            "args": ["-v"]
+            "args": ["-g", "../grsec-samples"]
         },
         {
             "name": "RSpec - all",

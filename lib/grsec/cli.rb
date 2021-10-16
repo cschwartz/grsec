@@ -3,6 +3,7 @@
 require "thor"
 require "thor/actions"
 require "runcom"
+require "pathname"
 
 $thor_runner = false # rubocop:disable Style/GlobalVars
 
@@ -58,7 +59,38 @@ module Grsec
       say and super
     end
 
+    desc "-g, [--generate] PATH", "Generate the documentation."
+    map %w[-g --generate] => :generate
+    # TODO: Factor out generate logic to generator class
+    # :reek:FeatureEnvy
+    # :reek:TooManyStatements
+    def generate path
+      base_path = Pathname.new path
+      collections = {roles: parse_roles(base_path), controls: parse_controls(base_path)}
+      references = collections.transform_values(&:references)
+      collections.each_value { |collection| collection.parse references }
+      collections[:controls].controls.each { |control| ControlRenderer.new(control).render }
+    end
+
     private
+
+    # :reek:UtilityFunction
+    def parse base_path, glob, collection
+      definitions = base_path.glob glob
+      definitions.each do |file|
+        definition = File.read file
+        collection.instance_eval definition
+      end
+      collection
+    end
+
+    def parse_controls base_path
+      parse base_path, "controls/*_controls.rb", ControlCollection.new
+    end
+
+    def parse_roles base_path
+      parse base_path, "roles/*_role.rb", RoleCollection.new
+    end
 
     attr_reader :configuration
   end
