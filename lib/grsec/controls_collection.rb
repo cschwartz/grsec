@@ -1,20 +1,5 @@
 # frozen_string_literal: true
 
-class String
-  def strip_heredoc
-    gsub(/^#{scan(/^[ \t]*(?=\S)/).min}/, "")
-  end
-end
-
-# 1. Iterate over all roles and build
-#  a. List of role references which can later be used to lazyly resolve roles
-#  b. Role parsers
-# -- do the same for all other entity types --
-# 2. Parse roles and assign parsed roles to list of role references
-# -- do the same for all other entity types
-# 3. Render roles
-# -- do the same for all other entity types
-
 module Grsec
   ControlReference = Struct.new :group, :id, keyword_init: true do
     def to_s
@@ -26,7 +11,7 @@ module Grsec
     end
   end
 
-  class ControlCollection < ItemCollection
+  class ControlsCollection < ItemsCollection
     def initialize
       super reference_class: ControlReference, parser_class: ControlParser
     end

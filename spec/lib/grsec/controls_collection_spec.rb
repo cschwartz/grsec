@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe Grsec::ControlCollection do
+RSpec.describe Grsec::ControlsCollection do
   subject(:control_collection) { described_class.new }
 
   it "generates references from controls passed via block" do

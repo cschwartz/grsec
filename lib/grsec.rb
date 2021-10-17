@@ -2,7 +2,8 @@
 
 require "grsec/identity"
 require "grsec/cli"
+require "grsec/generator"
 require "grsec/references"
-require "grsec/item_collection"
-require "grsec/role_collection"
-require "grsec/control_collection"
+require "grsec/items_collection"
+require "grsec/roles_collection"
+require "grsec/controls_collection"

@@ -2,7 +2,7 @@
 
 module Grsec
   # :reek:TooManyInstanceVariables
-  class ItemCollection
+  class ItemsCollection
     attr_reader :references, :items
 
     def initialize reference_class:, parser_class:
@@ -25,6 +25,10 @@ module Grsec
       reference_id = @reference_class.new(**reference)
       @references.register reference_id
       @raw_items[reference_id] = item_definition
+    end
+
+    def item_name
+      self.class.name.split("::").last.gsub(/Collection$/, "").downcase
     end
   end
 end
