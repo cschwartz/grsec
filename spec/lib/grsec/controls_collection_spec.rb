@@ -17,14 +17,14 @@ RSpec.describe Grsec::ControlsCollection do
     end
     control_collection.parse({roles: nil, controls: nil})
 
-    expect(control_collection.controls.size).to eq(2)
+    expect(control_collection.items.size).to eq(2)
   end
 
   it "generate control with the apropriate properties" do
     control_collection.instance_eval { control(group: "TEST", id: 1) { state :active } }
     control_collection.parse({roles: nil, controls: nil})
 
-    expect(control_collection.controls.first).to have_attributes(
+    expect(control_collection.items.first).to have_attributes(
       state: :active,
       reference: control_collection.references.TEST_1
     )

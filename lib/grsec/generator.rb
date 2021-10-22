@@ -12,7 +12,7 @@ module Grsec
     def generate
       load_collections
       parse_collections
-      @collections[:controls].controls.each { |control| ControlRenderer.new(control).render }
+      @collections[:controls].items.each { |control| ControlRenderer.new(control).render }
     end
 
     private
