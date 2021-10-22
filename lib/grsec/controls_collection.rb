@@ -1,14 +1,12 @@
 # frozen_string_literal: true
 
 module Grsec
-  ControlReference = Struct.new :group, :id, keyword_init: true do
-    def to_s
-      "#{group}_#{id}"
-    end
+  ControlReference = generate_references %i[group id]
 
-    def to_sym
-      to_s.to_sym
-    end
+  ControlType = define_type do
+    attribute name: :accountable, type: reference(RoleType)
+    attribute name: :state, type: options(:inactive, :active, :archived)
+    attribute name: :statement, type: :description
   end
 
   class ControlsCollection < ItemsCollection

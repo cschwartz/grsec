@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
 module Grsec
-  RoleReference = Struct.new :id, keyword_init: true do
-    def to_s
-      id.to_s
-    end
+  RoleReference = generate_references [:id]
 
-    def to_sym
-      to_s.to_sym
-    end
-  end
+  RoleType = define_type { attribute name: :title, type: String }
 
   class RolesCollection < ItemsCollection
     attr_reader :references
